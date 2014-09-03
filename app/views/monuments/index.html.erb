@@ -1,0 +1,36 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+  	<p align="center">
+  	<%= link_to "Monuments", new_monument_path,:class=>'btn btn-sm btn-primary',:title=>"Add New Monument" %>
+	</p>
+  </div>
+  <table class="table">
+  	<% unless @monuments.blank? %>
+			<tr class="table-titles">
+			   <td><span class="label label-default">Monument</span></td>
+			   <td><span class="label label-default">Collection</span></td>
+			   <td><span class="label label-default">Category</span></td>
+			    <td align="right"><span class="label label-default">Pictures</span></td>
+			   <td class="button-action"></td>
+			   <td class="button-action"></td>
+			   <td class="button-action"></td>
+		   </tr>
+		 <% @monuments.each do |monument| %>
+		   <tr class="<%= cycle("odd","even")%>">
+			   <td><%= link_to monument.name, monument %></td>
+			   <td><%= link_to monument.collection.title,monument.collection %></td>
+			   <td><%= monument.category.name %></td>
+			   <td align="right"><%= monument.pictures.count.to_s %></td>
+			   <td class="button-action"><%= link_to "Add Picture", new_picture_path ,:class=>'btn btn-xs btn-success'%></td>
+			   <td class="button-action"><%= link_to "View", monument ,:class=>'btn btn-xs btn-success'%></td>
+			   <td class="button-action"><%= link_to "Edit", edit_monument_path(monument),:class=>'btn btn-xs btn-warning' %></td>
+			   <td class="button-action"><%= button_to "Remove", monument, :confirm => 'are you sure?', :method => :delete, :class => 'btn btn-xs btn-danger',:title=>'delete' %></td>
+		   </tr>
+		<% end %>
+	<% end %>
+  </table>
+  
+</div>
+
+
+

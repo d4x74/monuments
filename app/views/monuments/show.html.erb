@@ -1,0 +1,96 @@
+<div class="panel panel-default">
+	  <div class="panel-heading">
+	  	<h3 align="center">
+	  		<%= label_tag("List View",nil,{:id=>"monument-list-view-bt",:class=>"btn btn-xs btn-primary",:onclick=>"$('#monument-cover-flow').addClass('none');$('#monument-list-view').removeClass('none');"}) %>
+	  		<%= link_to "Monument",monuments_url %>
+	  		<%= label_tag("Cover Flow",nil,{:id=>"monument-cover-flow-bt",:class=>"btn btn-xs btn-primary",:onclick=>"$('#monument-list-view').addClass('none');$('#monument-cover-flow').removeClass('none');"}) %>
+	  	</h3>
+	  </div>
+		<table align="center" id="monument-list-view">
+			<tr>
+				<td colspan="4" align="center"><h3><%= label_tag :title,@monument.name,:class=>"label label-success" %></h3></td>
+			</tr>
+			<tr>
+				<td>
+					<%= label_tag :collection,"Collection",:class=>"label label-default" %>
+					<%= label_tag :collection,@monument.collection.title,:class=>"label label-danger" %>
+				</td>
+				<td colspan="2"></td>
+				<td>
+					<%= label_tag :category,"Category",:class=>"label label-default" %>
+					<%= label_tag :category,@monument.category.name,:class=>"label label-danger" %><br />
+				</td>
+			</tr>
+			<tr>
+				<td colspan="4">&nbsp;&bull;&nbsp;</td>
+			</tr>
+			<tr>
+				<td colspan="4">
+					<table id="monument" align="center">
+						<tr>
+							<td>
+								<%= label_tag "File Name",nil,{:class=>'label label-default'} %>
+							</td>
+							<td>
+								<%= label_tag "Date",nil,{:class=>'label label-default'} %>
+							</td>
+							<td>
+								<%= label_tag "Size",nil,{:class=>'label label-default'} %>
+							</td>
+							<td>
+								<%= label_tag "Content",nil,{:class=>'label label-default'} %>
+							</td>
+						</tr>
+						
+					<% @monument.pictures.each do |picture| %>
+						<tr>
+							<td>
+								<%= label_tag picture.photo_file_name,nil,{:class=>'label label-success'} %><br />
+							</td>
+							<td>
+								<%= label_tag picture.created_at.strftime('%d %B %Y'),nil,{:class=>'label label-warning'} %><br />
+							</td>
+							<td>
+								<%= label_tag picture.photo_file_size,nil,{:class=>'label label-danger'} %><br />
+							</td>
+							<td>
+								<%= label_tag picture.photo_content_type,nil,{:class=>'label label-primary'} %><br />
+		
+							</td>
+						</tr>
+						
+							
+					<% end %>
+					</table>	
+				</td>
+			</tr>
+		</table>
+		
+		<table align="center" id="monument-cover-flow" class="none">
+			<tr>
+				<td colspan="4" align="center"><h3><%= label_tag :title,@monument.name,:class=>"label label-success" %></h3></td>
+			</tr>
+			<tr>
+				<td colspan="3">
+					<% @monument.pictures.each do |picture| %>
+							<%= image_tag picture.photo.url,:class=>"picture minipic",:title=>picture.description %>
+					<% end %>	
+				</td>
+			</tr>
+			<tr>
+				<td width="25%">
+					<%= label_tag :collection,"Collection",:class=>"label label-default" %>
+					<%= label_tag :collection,@monument.collection.title,:class=>"label label-danger" %>
+				</td>
+				<td width="50%" colspan="2"></td>
+				<td width="25%" align="right">
+					<%= label_tag :category,"Category",:class=>"label label-default" %>
+					<%= label_tag :category,@monument.category.name,:class=>"label label-danger" %><br />
+				</td>
+			</tr>
+		</table>
+
+  </div>
+</div>
+
+

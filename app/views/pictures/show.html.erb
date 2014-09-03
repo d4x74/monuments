@@ -1,0 +1,33 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+  	<h3 align="center"><%= link_to "Picture Details",pictures_url %></h3>
+  </div>
+  <div class="panel-heading">
+		<table id="monument" align="center">
+			<tr>
+				<td colspan="3">
+					<h3 align="center"><%= label_tag :title,@picture.name,:class=>"label label-success" %></h3>
+					<h4 align="center"><%= label_tag :date,@picture.created_at.strftime('%d %B %Y'),:class=>"label label-primary" %></h4>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="3" align="center"><%= image_tag @picture.photo.url,:class=>"picture",:title=>@picture.description %></td>
+			</tr>
+			<tr>
+				<td width="20%">
+					<%= label_tag "Collection",nil,:class=>"label label-default" %>
+					<%= label_tag :collection,@picture.monument.collection.title,:class=>"label label-danger" %><br />
+				</td>
+				<td width="60%"></td>
+				<td width="20%" align="right">
+					<%= label_tag "Monument",nil,:class=>"label label-default" %>
+					<%= label_tag :collection,@picture.monument.name,:class=>"label label-danger" %><br />
+				</td>
+			</tr>
+		</table>
+  </div>
+</div>
+
+
+
+

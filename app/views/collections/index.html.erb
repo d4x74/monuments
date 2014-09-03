@@ -1,0 +1,41 @@
+  <%= form_for(@collection) do |f| %>
+    <% if @collection.errors.any? %>
+  		<strong class="error-counter"><%= pluralize(@collection.errors.count, "error") %> :</strong>
+		 <% @collection.errors.full_messages.each do |msg| %>
+	        <li><%= msg %></li>
+	     <% end %>
+	  <br />
+    <% end %>
+
+	<h3 align="center">Collections</h3>
+	<div class="panel panel-default">
+	  <div class="panel-heading">
+		<div class="input-group">
+			<%= f.text_field :title,:class=>'form-control',:placeholder=>"Add a New Album"%>
+			<span class="input-group-btn">
+				<%= f.submit "Create Collection" ,:class=>'btn btn-success' %>
+			</span>
+		</div>	
+  <% end %>
+   </div>
+  <table class="table">
+	<% unless @collections.blank? %>
+	   		<tr>
+		   	<td width="50%"><span class="label label-default">Title</span></td>
+		   	<td width="20%"><span class="label label-default">Monuments</span></td>
+		   	<td class="button-action"></td>
+		   	<td class="button-action"></td>
+		   </tr>
+		 <% @collections.each do |collection| %>
+		   <tr>
+		   	<td width="50%"><span class="label label-primary"><%= collection.title %></span></td>
+		   	<td width="20%"><span class="label label-primary"><%= collection.monuments.count.to_s %></span></td>
+		   	<td class="button-action"><%= link_to "View Monuments", collection_path(collection),:class=>'btn btn-xs btn-warning' %></td>
+		   	<td class="button-action"><%= link_to "Edit", edit_collection_path(collection),:class=>'btn btn-xs btn-warning' %></td>
+		   	<td class="button-action"><%= link_to "Remove", collection, :confirm => 'are you sure?', :method => :delete, :class => 'btn btn-xs btn-danger',:title=>'delete' %></td>
+		   </tr>
+	<% end %>
+	<% end %>
+  </table>
+</div>
+

@@ -1,0 +1,31 @@
+<%= form_for(@picture) do |f| %>
+    <% if @picture.errors.any? %>
+  		<strong class="error-counter"><%= pluralize(@picture.errors.count, "error") %> :</strong>
+		 <% @picture.errors.full_messages.each do |msg| %>
+	        <li><%= msg %></li>
+	     <% end %>
+	  <br />
+    <% end %>
+	
+	<%= f.label :name,:class=>"label label-primary" %>
+	<%= f.text_field :name,:class=>'form-control'%>
+	<br />
+	<%= f.label :description,:class=>"label label-primary" %>
+	<%= f.text_area :description,:class=>'form-control'%>
+	<br />
+	<%= f.label :date,:class=>"label label-primary" %><br />
+	<%= f.date_select :date,:class=>'form-control'%>
+	<br />
+	<br />
+	<% @monuments = Monument.all %>
+	<%= f.label :monument,:class=>"label label-primary" %><br />
+	<%= f.select :monument_id,options_for_select(@monuments.map{|d| [d.name,d.id]}),:class=>'form-control'%>
+	<br />
+	<br />
+	<%= f.label :photo,:class=>"label label-primary" %>
+	<%= f.file_field :photo ,:class=>'btn btn-xs btn-primary'%>
+	<%= f.text_field :photo_file_name ,:class=>'form-control'%>
+	<p align="center">
+    	<%= f.submit "update" ,:class=>'btn btn-sm btn-primary' %>
+ 	</p>
+ <% end %>

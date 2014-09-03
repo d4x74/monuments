@@ -1,0 +1,38 @@
+<%= form_for(@monument, :html => { :multipart => true })  do |f| %>
+    <% if @monument.errors.any? %>
+  		<strong class="error-counter"><%= pluralize(@monument.errors.count, "error") %> :</strong>
+		 <% @monument.errors.full_messages.each do |msg| %>
+	        <li><%= msg %></li>
+	     <% end %>
+	  <br />
+    <% end %>
+	
+	<%= f.label :name,:class=>"label label-primary" %>
+	<%= f.text_field :name,:class=>'form-control'%>
+	<br />
+	<%= f.label :description,:class=>"label label-primary" %>
+	<%= f.text_area :description,:class=>'form-control'%>
+	<br />
+	<% @collections = Collection.all %>
+	<%= f.label :collection,:class=>"label label-primary" %><br />
+	<%= f.select :collection_id,options_for_select(@collections.map{|d| [d.title,d.id]}),:class=>'form-control'%>
+	<br />
+	<br />
+	<% @categories = Category.all %>
+	<%= f.label :category,:class=>"label label-primary" %><br />
+	<%= f.select :category_id ,options_for_select(@categories.map{|c| [c.name,c.id]}),:class=>'form-control'%>
+	<br />
+	<br />
+	<div class="control-group">
+		<%= label_tag :photo,nil,:class=>"label label-primary" %>
+		<div class="controls">
+			<%= file_field_tag "imgs[]", :accept=>['images/jpeg','images/gif','images/png'],:multiple=>true ,:class=>'btn btn-xs btn-primary'%>		
+		</div>	
+	</div>		
+	<br />
+	<br />
+	
+		<p align="center">
+    	<%= f.submit "update" ,:class=>'btn btn-sm btn-primary' %>
+ 	</p>
+ <% end %>

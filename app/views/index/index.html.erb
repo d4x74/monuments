@@ -1,0 +1,40 @@
+<div class="jumbotron">
+  <h1 align="center">Hello!</h1>
+  <p align="center">Welcome to Monuments</p>
+  <p align="center"><a href="/register" class="btn btn-primary btn-lg" role="button">Register</a>
+  <a href="/login" class="btn btn-primary btn-lg" role="button">Login</a></p>
+</div>
+<% unless @monuments.blank? %>
+	 <% @monuments.each do |monument| %>
+	 	<div class="panel panel-default">
+			  <div class="panel-heading">
+					<table id="monument" align="center">
+		  			<tr>
+						<td colspan="3" align="center"><h3><%= label_tag :title,monument.name,:class=>"label label-success" %></h3></td>
+					</tr>
+						<tr>
+						<td colspan="3">
+								<% monument.pictures.each do |picture| %>
+									<%= image_tag picture.photo.url,:class=>"picture",:title=>picture.description %>
+								<% end %>	
+							</td>
+						</tr>
+					<tr>
+						<td width="20%">
+							<%= label_tag "Photo Album",nil,:class=>"label label-default" %>
+							<%= label_tag :collection,monument.collection.title,:class=>"label label-danger" %><br />
+						</td>
+						<td width="60%"></td>
+						<td width="20%" align="right">
+							<%= label_tag :category,"Category",:class=>"label label-default" %>
+							<%= label_tag :category,monument.category.name,:class=>"label label-danger" %><br />
+						</td>
+					</tr>
+				</table>
+		  </div>
+		</div>
+	<% end %>
+<% end %>
+
+
+

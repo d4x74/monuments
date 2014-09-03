@@ -1,0 +1,159 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+@import "bootstrap";
+
+.label {
+  
+}
+
+.data {
+  
+}
+
+.fleft{
+	float:left;
+}
+
+.picture{
+	max-width:500px;
+	max-height:500px;
+}
+.flright{
+	float:right
+}
+
+.minipic{
+	max-width:150px;
+	max-height:150px;
+}
+
+.table-titles{
+	font-weight: bold;
+}
+.none{
+	visibility: hidden;
+}
+
+.navbar-fixed-top{
+	background-color:#276DA9;
+	color:white;
+}
+
+
+.project-name{
+	font-size:20px;
+	margin-top:7px;
+	margin-left:5px;
+	color:white;
+	cursor: pointer;
+}
+
+.project-name a, a:hover{
+	color:lightgrey;
+	cursor: pointer;
+}
+
+.search-div{
+	float:right;
+	border:0px solid lime;
+}
+
+.navbar-toggle {
+  color:white;
+  padding: 2px 8px;
+  margin-top: 4px;
+  margin-right: 20px;
+  margin-bottom: 4px;
+  background-color: transparent;
+  background-image: none;
+  border: 1px solid #FFF;
+  border-radius: 4px;
+}
+
+.navbar-toggle:focus {
+  outline: none;
+    cursor: pointer;
+
+}
+.navbar-toggle .icon-bar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  border-radius: 1px;
+}
+
+.button-action{
+	width:15%;
+	text-align: center;
+}
+
+#monument-cover-flow{
+	width:100%;	
+	text-align:center;
+}
+
+
+#monument-list-view{
+	width:100%;
+	text-align:center;
+}
+
+#monument{
+	
+}
+
+#menu-monuments{
+	margin-top:6px;
+	margin-left:10px;
+}
+
+#category{
+	margin-top:5px;
+	height:24px;
+	color:white;
+	margin-right:10px;
+	float:right;
+}
+
+#album{
+	margin-top:5px;
+	height:24px;
+	color:white;
+	margin-right:10px;
+	float:right;
+}
+
+#findthis{
+	width:190px;
+	height:24px;
+	margin-top:5px;
+	font-size:12px;
+	margin-bottom:5px;
+	border-bottom:0px solid #49A4CB;
+	float:right;
+	margin-right:0px;
+	padding-left:5px;
+}
+
+#search-submit{
+	height:24px;
+	color:white;
+	margin-top:0px;
+	margin-right:2px;
+}
+
+

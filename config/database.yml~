@@ -1,0 +1,33 @@
+# Postgresql
+development:
+  adapter: postgresql
+  template: template1
+  encoding: UTF8
+  database: monuments
+  pool: 5
+  username: postgres
+  password: laMIAzia
+  host: 127.0.0.1
+  port: 5432
+
+test:
+  adapter: postgresql
+  template: template1
+  encoding: UTF8
+  database: monuments
+  pool: 5
+  username: postgres
+  password: laMIAzia
+  port: 5432
+  
+production:
+  adapter: postgresql
+  template: template1
+  encoding: UTF8
+  database: monuments
+  pool: 7
+  username: postgres
+  password: laMIAzia
+  host: 127.0.0.1
+  port: 5432
+ 

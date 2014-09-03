@@ -1,0 +1,15 @@
+<%= form_for(@collection) do |f| %>
+    <% if @collection.errors.any? %>
+  		<strong class="error-counter"><%= pluralize(@collection.errors.count, "error") %> :</strong>
+		 <% @collection.errors.full_messages.each do |msg| %>
+	        <li><%= msg %></li>
+	     <% end %>
+	  <br />
+    <% end %>
+	
+	<%= f.label :title,:class=>"label label-default" %><br />
+	<%= f.text_field :title,:class=>'form-control'%>
+	
+    <%= f.submit "Update" ,:class=>'btn btn-success' %>
+ 
+ <% end %>

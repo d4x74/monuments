@@ -1,0 +1,50 @@
+<%= form_for(@category) do |f| %>
+    <% if @category.errors.any? %>
+  		<strong class="error-counter"><%= pluralize(@category.errors.count, "error") %> :</strong> </p>
+		 <% @category.errors.full_messages.each do |msg| %>
+	        <li><%= msg %></li>
+	     <% end %>
+	  <br />
+    <% end %>
+	
+
+	<h3 align="center">Categories</h3>
+	
+	<div class="panel panel-default">
+	  <div class="panel-heading">
+			<div class="input-group">
+				<%= f.text_field :name,:class=>'form-control',:placeholder=>'Add a New Category'%>
+				<span class="input-group-btn">
+					<%= f.submit "Create" ,:class=>'btn btn-success' %>
+				</span>
+			</div>	
+	  </div>
+ 
+<% end %>
+  
+	  <table class="table">
+		<% unless @categories.blank? %>
+			<tr>
+		   	<td width="40%"><span class="label label-default">Category</span></td>
+		   	<td width="20%"><span class="label label-default">Monuments</span></td>
+		   	<td class="button-action"></td>
+		   	<td class="button-action"></td>
+		   	<td class="button-action"></td>
+		   </tr>
+		
+			 <% @categories.each do |category| %>
+			   <tr>
+			   	<td width="40%"><span class="label label-primary"><%= category.name %></span></td>
+			   	<td width="20%"><span class="label label-primary"><%= category.monuments.count.to_s %></span></td>
+			   	<td class="button-action"><%= link_to "View", category,:class=>'btn btn-xs btn-warning' %></td>
+			   	<td class="button-action"><%= link_to "Edit", edit_category_path(category),:class=>'btn btn-xs btn-warning' %></td>
+			   	<td class="button-action"><%= link_to "Remove", category, :confirm => 'are you sure?', :method => :delete, :class => 'btn btn-xs btn-danger',:title=>'delete' %></td>
+			   </tr>
+		  	 <% end %>
+		<% end %>
+	  </table>
+	</div>
+
+
+
+

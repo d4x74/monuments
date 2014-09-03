@@ -1,0 +1,32 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+  	<p align="center">
+  		<%= link_to "Add Picture", new_picture_path,:class=>'btn btn-sm btn-primary',:title=>"Add New Picture" %>
+	</p>
+  </div>
+  <table class="table">
+  	<% unless @pictures.blank? %>
+			<tr class="table-titles">
+			   <td><span class="label label-default">Monument</span></td>
+			   <td><span class="label label-default">Collection</span></td>
+			   <td><span class="label label-default">Date</span></td>
+			   <td class="button-action"></td>
+			   <td class="button-action"></td>
+		   </tr>
+		 <% @pictures.each do |picture| %>
+		   <tr class="<%= cycle("odd","even")%>">
+			   <td><%= link_to picture.monument.name,picture.monument %></td>
+			   <td><%= link_to picture.monument.collection.title,picture.monument.collection %></td>
+			   <td><%= picture.created_at.strftime('%d %B %Y') %></td>
+			   <td class="button-action"><%= link_to "View", picture ,:class=>'btn btn-xs btn-success'%></td>
+			   <td class="button-action"><%= link_to "Edit", edit_picture_path(picture),:class=>'btn btn-xs btn-warning' %></td>
+			   <td class="button-action"><%= button_to "Remove", picture, :confirm => 'are you sure?', :method => :delete, :class => 'btn btn-xs btn-danger',:title=>'delete' %></td>
+		   </tr>
+		<% end %>
+	<% end %>
+  </table>
+  
+</div>
+
+
+

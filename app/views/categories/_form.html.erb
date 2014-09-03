@@ -1,0 +1,16 @@
+<%= form_for(@category) do |f| %>
+    <% if @category.errors.any? %>
+  		<strong class="error-counter"><%= pluralize(@category.errors.count, "error") %> :</strong> </p>
+		 <% @category.errors.full_messages.each do |msg| %>
+	        <li><%= msg %></li>
+	     <% end %>
+	  <br />
+    <% end %>
+	
+	<%= f.label :name,:class=>"label label-default" %>
+	<%= f.text_field :name,:class=>'form-control'%>
+	<br />
+   	<p align="center">
+    	<%= f.submit "update" ,:class=>'btn btn-sm btn-success' %>
+	</p>
+<% end %>

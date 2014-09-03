@@ -1,0 +1,43 @@
+	<% unless @results.blank? %>
+		<h3 align="center"><%= label_tag "Results found for:",nil,:class=>"label label-default" %>&nbsp;<%= label_tag @searched_item,nil,:class=>"label label-success" %></h3>
+
+		 <% @results.each do |result| %>
+		    <% if @type == "tsearch" %>
+				<% monument = Monument.find(result.searchable_id)%>
+			<% else %>
+				<% monument = result %>
+			<% end %>
+	    
+		 	<div class="panel panel-default">
+			  <div class="panel-heading">
+					<table id="monument" align="center">
+						<tr>
+							<td colspan="3" align="center"><h3><%= label_tag :title,monument.name,:class=>"label label-success" %></h3></td>
+						</tr>
+						<tr>
+							<td colspan="3">
+								<% monument.pictures.each do |picture| %>
+									<%= image_tag picture.photo.url,:class=>"picture",:title=>picture.description %>
+								<% end %>	
+							</td>
+						</tr>
+						<tr>
+							<td width="20%"  align="left">
+								<%= label_tag :collection,"Collection",:class=>"label label-default" %>
+								<%= label_tag :collection,monument.collection.title,:class=>"label label-danger" %><br />
+							</td>
+							<td width="60%"></td>
+							<td width="20%" align="left">
+								<%= label_tag :category,"Category",:class=>"label label-default" %>
+								<%= label_tag :category,monument.category.name,:class=>"label label-danger" %><br />
+							</td>
+						</tr>
+					</table>
+			  </div>
+			</div>
+		 <% end %>
+	<% else %>
+		<h3 align="center"><%= label_tag "Sorry, no results found for:",nil,:class=>"label label-default" %>&nbsp;<%= label_tag @searched_item,nil,:class=>"label label-danger" %></h3>
+	<% end %>
+
+
