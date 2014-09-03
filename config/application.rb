@@ -11,7 +11,9 @@ module MOnuMENTS
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
-    config.assets.initialize_on_precompile = false
+    config.assets.initialize_on_precompile = true
+    
+    config.serve_static_assets = true
 
     config.active_support.escape_html_entities_in_json = true
     
